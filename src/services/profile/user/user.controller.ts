@@ -9,14 +9,15 @@ import {
   Get,
   UseGuards,
   Response,
-  Req
+  Req,
+  Param
 } from '@nestjs/common';
 
 import { UserService } from './user.service';
 import { ApiException } from '../../../shared/api-exception.model';
-import { Observable } from 'rxjs';
-import { Subscription } from 'rxjs';
-import { AxiosResponse } from 'axios';
+import { createTransferDto } from './dto/createTransfer.dto';
+import { createPaymentdto } from './dto/createPayment.dto';
+
 
 @Controller('users')
 export class UserController {
@@ -30,26 +31,93 @@ export class UserController {
       .subscribe(response => {
         res.send(response.data)
       }, (err) => {
-        console.log(err)
         res.json({
-          code: "1"
+          message: "Error en la petición",
+          
         })
       }
       )
   }
   @Get('')
-  listar(@Response() res){
+  listarUsuarios(@Response() res){
     return this
     ._userService
-    .listar()
+    .listarUsuarios()
     .subscribe(response => {
       res.send(response.data)
     }, (err) => {
       console.log(err)
       res.json({
-        code: "1"
+        message: "Error en la petición"
       })
     }
     )
+  }
+
+  @Get('/cuentas')
+  listarCuentasBanco(@Response() res){
+    return this
+    ._userService
+    .listarCuentasBanco()
+    .subscribe(response => {
+      res.send(response.data)
+    }, (err) => {
+      console.log(err)
+      res.json({
+        message: "Error en la petición"
+      })
+    }
+    )
+  }
+
+
+  @Post('/registrarpago')
+  registrarPago(@Response() res, @Body() createtransferDto:createTransferDto) {
+    console.log(createtransferDto)
+    return this
+      ._userService
+      .registrarMetodoPago(createtransferDto)
+      .subscribe(response => {
+        res.send(response.data)
+      }, (err) => {
+        console.log(err)
+        res.json({
+          message: "Error en la petición",
+          
+        })
+      }
+      )
+  }
+  @Get('/:id')
+  listarPago(@Response() res, @Param() param){
+    console.log(param.id)
+    return this
+    ._userService
+    .listarMetodoPago(param.id)
+    .subscribe(response => {
+      res.send(response.data)
+    }, (err) => {
+      console.log(err)
+      res.json({
+        message: "Error en la petición"
+      })
+    }
+    )
+  }
+
+  @Post('/pagar')
+  emitirPago(@Response() res, @Body() createpaymentdto: createPaymentdto) {
+    return this
+      ._userService
+      .emitirPago(createpaymentdto)
+      .subscribe(response => {
+        res.send(response.data)
+      }, (err) => {
+        res.json({
+          message: "Error en la petición",
+          
+        })
+      }
+      )
   }
 }
