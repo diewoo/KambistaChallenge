@@ -19,8 +19,7 @@ import { Payment } from './interface/pago.interface';
 import { createPaymentdto } from './dto/createPayment.dto';
 
 const apiUrl = 'https://api.sandbox.hyperwallet.com/rest/v3/users';
-const apiUrl2 = 'https://api.sandbox.hyperwallet.com/rest/v3/users/usr-60c43bd5-436a-4fa7-b4ab-3f' +
-  '7a7647cdda/bank-accounts';
+
 const apiUrl3 = 'https://api.sandbox.hyperwallet.com/rest/v3/payments'
 const config = {
   headers: {
@@ -78,11 +77,14 @@ export class UserService {
   listarUsuarios(): Observable<AxiosResponse<User[]>> {
     return this.http.get<User[]>(apiUrl, config)
   }
-  listarCuentasBanco(): Observable<AxiosResponse<TransferMethod[]>> {
-    return this.http.get<TransferMethod[]>(apiUrl2, config)
+  listarCuentasBanco(usertoken:string): Observable<AxiosResponse<any[]>> {
+    const url=`${apiUrl}/${usertoken}/bank-accounts`;
+    console.log(url)
+    return this.http.get(url, config)
   }
 
-  registrarMetodoPago(createtransferDto: createTransferDto): Observable<AxiosResponse<TransferMethod>> {
+  registrarMetodoPago(createtransferDto: createTransferDto,usertoken:string): Observable<AxiosResponse<TransferMethod>> {
+    const url=`${apiUrl}/${usertoken}/bank-accounts`;
     let createTransfer = createtransferDto;
     createTransfer.transferMethodCountry = 'US';
     createTransfer.transferMethodCurrency = 'USD';
@@ -91,11 +93,11 @@ export class UserService {
     createTransfer.bankAccountPurpose = createtransferDto.bankAccountPurpose;
     createTransfer.bankAccountId = createtransferDto.bankAccountId;
     console.log(createTransfer)
-    return this.http.post<TransferMethod>(apiUrl2, createTransfer, config)
+    return this.http.post<TransferMethod>(url, createTransfer, config)
   }
 
-  listarMetodoPago(tokenid: number): Observable<any> {
-    const url = `${apiUrl2}/${tokenid}`;
+  listarMetodoPagoDeUnusuario(usertoken:string,tokenid: string): Observable<any> {
+    const url = `${apiUrl}/${usertoken}/bank-accounts/${tokenid}`;
     console.log(url)
     return this.http.get<TransferMethod>(url, config).pipe(tap(_ => console.log(`pago obtenido id=${tokenid}`))
       //,catchError(this.handleError < TransferMethod > (`pago id=${tokenid}`))
