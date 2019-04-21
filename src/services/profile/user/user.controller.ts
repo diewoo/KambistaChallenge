@@ -23,10 +23,10 @@ export class UserController {
   constructor(private readonly _userService : UserService) {}
 
   @Post('')
-  register(@Response()res, @Body()createuserDto : createUserDto) {
+  registrar(@Response()res, @Body()createuserDto : createUserDto) {
     return this
       ._userService
-      .register(createuserDto)
+      .registrar(createuserDto)
       .subscribe(response => {
         res.send(response.data)
       }, (err) => {
