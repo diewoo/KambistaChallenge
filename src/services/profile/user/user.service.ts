@@ -92,13 +92,13 @@ export class UserService {
     createTransfer.branchId = createtransferDto.branchId;
     createTransfer.bankAccountPurpose = createtransferDto.bankAccountPurpose;
     createTransfer.bankAccountId = createtransferDto.bankAccountId;
-    console.log(createTransfer)
+    //console.log(createTransfer)
     return this.http.post<TransferMethod>(url, createTransfer, config)
   }
 
   listarMetodoPagoDeUnusuario(usertoken:string,tokenid: string): Observable<any> {
     const url = `${apiUrl}/${usertoken}/bank-accounts/${tokenid}`;
-    console.log(url)
+    //console.log(url)
     return this.http.get<TransferMethod>(url, config).pipe(tap(_ => console.log(`pago obtenido id=${tokenid}`))
       //,catchError(this.handleError < TransferMethod > (`pago id=${tokenid}`))
     );
