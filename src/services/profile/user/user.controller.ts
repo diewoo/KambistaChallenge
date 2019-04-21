@@ -30,6 +30,7 @@ export class UserController {
       .subscribe(response => {
         res.send(response.data)
       }, (err) => {
+        console.log(err)
         res.json({message: "Error en la petición"})
       })
   }

@@ -79,7 +79,8 @@ export class UserService {
   }
   listarCuentasBanco(usertoken : string) : Observable < AxiosResponse < any[] >> {
     const url = `${apiUrl}/${usertoken}/bank-accounts`;
-    console.log(url)return this
+    //console.log(url)
+    return this
       .http
       .get(url, config)
   }
