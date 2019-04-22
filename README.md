@@ -73,3 +73,15 @@ trm-7339d691-6be1-48a7-a13b-334cef609abb: token único de la cuenta de banco
 ```
 ![ScreenShot](https://raw.githubusercontent.com/diewoo/KambistaChallenge/master/assets/04.ListaMétodoDePagoUsuario.png)
 Para mas informacion de este método:https://portal.hyperwallet.com/docs/api/v3/resources/bank-accounts/retrieve
+
+```bash
+5.Emitir un pago.:POST
+https://kambistachallenge.herokuapp.com/users/pagar
+```
+![ScreenShot](https://raw.githubusercontent.com/diewoo/KambistaChallenge/master/assets/05.EmitirPago.png)
+Para mas informacion de este método:https://portal.hyperwallet.com/docs/api/v3/resources/payments/create
+## Contacto
+
+- Author - Diego Renteria Vidaurre
+- Correo - dgo250594@gmail.com
+
