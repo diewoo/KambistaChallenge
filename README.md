@@ -37,7 +37,39 @@ $ npm run start:prod
 ```
 # Endpoints
 ```bash
-1.Crear un usuario (persona a la cual se le enviará el dinero) :POST
+1.Permite crear un usuario (vale decir persona a la cual se le enviará el dinero):POST
 https://kambistachallenge.herokuapp.com/users
 Ejemplo:
+```
+![ScreenShot](https://raw.githubusercontent.com/diewoo/KambistaChallenge/master/assets/1.crearUsuario.png)
+Para más información de este método:https://portal.hyperwallet.com/docs/api/v3/resources/users/create
+```bash
+2.Permite listara todos los usuarios:GET
+https://kambistachallenge.herokuapp.com/users
+Ejemplo:
+```
+![ScreenShot](https://raw.githubusercontent.com/diewoo/KambistaChallenge/master/assets/02.ListarUsusarios.png)
+Para más información de este método:https://portal.hyperwallet.com/docs/api/v3/resources/users/list
+```bash
+3.Registrar el método de pago para el usuario donde por defecto deberás "setear" las variables para éste caso:
 
+"transferMethodCountry": "US",
+"transferMethodCurrency": "USD",
+"type": "BANK_ACCOUNT"
+https://kambistachallenge.herokuapp.com/users/registrarpago/usr-3f448b10-598d-4e2e-a241-3aba76393881
+donde:
+usr-3f448b10-598d-4e2e-a241-3aba76393881: token único del usuario creado ( aunque podría ser de cualquier usuario si se conoce su token)
+Ejemplo:
+```
+![ScreenShot](https://raw.githubusercontent.com/diewoo/KambistaChallenge/master/assets/03.RegistrarPago.png)
+
+Para mas informacion de este método:https://portal.hyperwallet.com/docs/api/v3/resources/bank-accounts/create
+```bash
+4.Listar método de pago dado un usuario:GET
+https://kambistachallenge.herokuapp.com/users/usr-7d0d1544-826e-4ac1-9bc8-99eaa3800360/bank-accounts/trm-7339d691-6be1-48a7-a13b-334cef609abb
+donde:
+usr-7d0d1544-826e-4ac1-9bc8-99eaa3800360: token único del usuario creado ( aunque podría ser de cualquier usuario si se conoce su token)
+trm-7339d691-6be1-48a7-a13b-334cef609abb: token único de la cuenta de banco 
+```
+![ScreenShot](https://raw.githubusercontent.com/diewoo/KambistaChallenge/master/assets/04.ListaMétodoDePagoUsuario.png)
+Para mas informacion de este método:https://portal.hyperwallet.com/docs/api/v3/resources/bank-accounts/retrieve
