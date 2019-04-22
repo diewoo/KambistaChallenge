@@ -8,6 +8,7 @@
         "node": "11.2.0"
     },
     "scripts": {
+        "build": "tsc -p tsconfig.build.json",
         "format": "prettier --write \"src/**/*.ts\"",
         "start": "ts-node -r tsconfig-paths/register src/main.ts",
         "start:dev": "nodemon",
