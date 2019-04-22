@@ -2,20 +2,20 @@
 
 Una aplicacion node escrita con el framework Nest.js
 
-#Caracteristicas
+# Caracteristicas
 .TypeScript
 .Nest js
 .CRUD operaciones 
 .Visual Studio Code
 
-#Instalación 
+# Instalación 
 $ npm install
 
-#Correr la  app
+# Correr la  app
  Desarrollo
 $ npm run start
-
-  watch mode
+ 
+ Watch mode
 $ npm run start:dev
 
   production mode
