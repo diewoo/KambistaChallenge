@@ -1,7 +1,7 @@
 # KambistaChallenge
 
-Un servicio API Rest de un mecanismo de pagos (envío de dinero) desarrollado en node js con el framework Nest.js, que tiene integración externa con el API del servicio Hyperwallet ,el cual es un servicio de "Payout" (pagos) de Paypal.
-Los requisitos planteados son:
+Un servicio API Rest de un mecanismo de pagos (envío de dinero) publicado en Heroku y desarrollado en node con el framework Nest.js, que tiene integración externa con el API del servicio Hyperwallet ,el cual es un servicio de "Payout" (pagos) de Paypal.
+Los requisitos planteados por Kambista son:
 ```bash
 1.Crear un usuario (persona a la cual se le enviará el dinero)
 2.Listar usuarios
@@ -24,7 +24,8 @@ Los requisitos planteados son:
 # Instalación 
 $ npm install
 
-# Correr la  app
+# Ejecutar la  app
+ ```bash
  Desarrollo
 $ npm run start
  
@@ -33,3 +34,10 @@ $ npm run start:dev
 
   production mode
 $ npm run start:prod
+```
+# Endpoints
+```bash
+1.Crear un usuario (persona a la cual se le enviará el dinero) :POST
+https://kambistachallenge.herokuapp.com/users
+Ejemplo:
+
