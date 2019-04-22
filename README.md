@@ -1,13 +1,25 @@
 # KambistaChallenge
 
-Una aplicacion node escrita con el framework Nest.js
+Un servicio API Rest de un mecanismo de pagos (envío de dinero) desarrollado en node js con el framework Nest.js, que tiene integración externa con el API del servicio Hyperwallet ,el cual es un servicio de "Payout" (pagos) de Paypal.
+Los requisitos planteados son:
+```bash
+1.Crear un usuario (persona a la cual se le enviará el dinero)
+2.Listar usuarios
+3.Registrar el método de pago para el usuario donde por defecto deberás "setear" las variasbles para éste caso:
 
-# Caracteristicas
+"transferMethodCountry": "US",
+"transferMethodCurrency": "USD",
+"type": "BANK_ACCOUNT"
+
+4. Listar método de pago dado un usuario.
+5. Emitir un pago.
+```
+# Caracteristicas de la app
   ```bash
-  TypeScript
-  Nest js
-  CRUD operaciones 
-  Visual Studio Code
+  -Escrita con TypeScript
+  -Framework Nest js
+  -CRUD operaciones con Observadores
+  -Editor de código Visual Studio Code
   ```
 # Instalación 
 $ npm install
