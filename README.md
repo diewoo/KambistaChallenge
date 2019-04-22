@@ -3,11 +3,12 @@
 Una aplicacion node escrita con el framework Nest.js
 
 # Caracteristicas
-.TypeScript
-.Nest js
-.CRUD operaciones 
-.Visual Studio Code
-
+  ```bash
+  TypeScript
+  Nest js
+  CRUD operaciones 
+  Visual Studio Code
+  ```
 # Instalación 
 $ npm install
 
