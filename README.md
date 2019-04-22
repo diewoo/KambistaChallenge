@@ -36,6 +36,7 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 # Endpoints
+URL:https://kambistachallenge.herokuapp.com/users
 ```bash
 1.Permite crear un usuario (vale decir persona a la cual se le enviará el dinero):POST
 https://kambistachallenge.herokuapp.com/users
@@ -80,6 +81,8 @@ https://kambistachallenge.herokuapp.com/users/pagar
 ```
 ![ScreenShot](https://raw.githubusercontent.com/diewoo/KambistaChallenge/master/assets/05.EmitirPago.png)
 Para mas informacion de este método:https://portal.hyperwallet.com/docs/api/v3/resources/payments/create
+## A desarrollar
+Interfaz web que permite realizar estas operaciones...
 ## Contacto
 
 - Author - Diego Renteria Vidaurre
