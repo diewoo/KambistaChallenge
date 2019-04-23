@@ -31,7 +31,6 @@ export class UserController {
       .subscribe(response => {
         res.send(response.data)
       }, (err) => {
-
         res.send({
           data: err.response.data,
           mensaje: "Error en la petición"
@@ -46,7 +45,6 @@ export class UserController {
       .subscribe(response => {
         res.send(response.data)
       }, (err) => {
-        //console.log(err)
         res.send({
           data: err.response.data,
           mensaje: "Error en la petición"
@@ -62,7 +60,6 @@ export class UserController {
       .subscribe(response => {
         res.send(response.data)
       }, (err) => {
-        //console.log(err)
         res.send({
           data: err.response.data,
           mensaje: "Error en la petición"
@@ -95,7 +92,6 @@ export class UserController {
       .subscribe(response => {
         res.send(response.data)
       }, (err) => {
-        //console.log(err)
         res.send({
           data: err.response.data,
           mensaje: "Error en la petición"
@@ -111,7 +107,6 @@ export class UserController {
       .subscribe(response => {
         res.send(response.data)
       }, (err) => {
-        //console.log(err)
         res.send({
           data: err.response.data,
           mensaje: "Error en la petición"

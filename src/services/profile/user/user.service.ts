@@ -38,11 +38,7 @@ export class UserService {
   constructor(private readonly http : HttpService) {}
   private handleError < T > (operation = 'operation', result?: T) {
     return(error : any): Observable < T > => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // Let the app keep running by returning an empty result.
+      console.error(error);
       return of(result as T);
     };
   }
@@ -79,7 +75,6 @@ export class UserService {
   }
   listarCuentasBanco(usertoken : string) : Observable < AxiosResponse < any[] >> {
     const url = `${apiUrl}/${usertoken}/bank-accounts`;
-    //console.log(url)
     return this
       .http
       .get(url, config)
@@ -100,7 +95,6 @@ export class UserService {
 
   listarMetodoPagoDeUnusuario(usertoken : string, tokenid : string) : Observable < any > {
     const url = `${apiUrl}/${usertoken}/bank-accounts/${tokenid}`;
-    //console.log(url)
     return this.http.get < TransferMethod > (url, config).pipe(tap(_ => console.log(`pago obtenido id=${tokenid}`))
     //,catchError(this.handleError < TransferMethod > (`pago id=${tokenid}`))
     );
