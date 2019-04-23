@@ -1,5 +1,5 @@
-import {createUserDto} from './dto/createUser.dto';
-import {User} from './interface/user.interface';
+import { createUserDto } from './dto/createUser.dto';
+import { User } from './interface/user.interface';
 import {
   Controller,
   Post,
@@ -13,55 +13,65 @@ import {
   Param
 } from '@nestjs/common';
 
-import {UserService} from './user.service';
-import {ApiException} from '../../../shared/api-exception.model';
-import {createTransferDto} from './dto/createTransfer.dto';
-import {createPaymentdto} from './dto/createPayment.dto';
+import { UserService } from './user.service';
+import { ApiException } from '../../../shared/api-exception.model';
+import { createTransferDto } from './dto/createTransfer.dto';
+import { createPaymentdto } from './dto/createPayment.dto';
 
 @Controller('users')
 export class UserController {
-  constructor(private readonly _userService : UserService) {}
+  constructor(private readonly _userService: UserService) { }
 
   @Post('')
-  registrar(@Response()res, @Body()createuserDto : createUserDto) {
+  registrar(@Response() res, @Body() createuserDto: createUserDto) {
+
     return this
       ._userService
       .registrar(createuserDto)
       .subscribe(response => {
         res.send(response.data)
       }, (err) => {
-        console.log(err)
-        res.json({message: "Error en la petición"})
+
+        res.send({
+          data: err.response.data,
+          mensaje: "Error en la petición"
+        })
       })
   }
   @Get('')
-  listarUsuarios(@Response()res) {
+  listarUsuarios(@Response() res) {
     return this
       ._userService
       .listarUsuarios()
       .subscribe(response => {
         res.send(response.data)
       }, (err) => {
-        console.log(err)
-        res.json({message: "Error en la petición"})
+        //console.log(err)
+        res.send({
+          data: err.response.data,
+          mensaje: "Error en la petición"
+        })
       })
   }
 
   @Get('/cuentas/:usertoken')
-  listarCuentasBanco(@Response()res, @Param()param) {
+  listarCuentasBanco(@Response() res, @Param() param) {
     return this
       ._userService
       .listarCuentasBanco(param.usertoken)
       .subscribe(response => {
         res.send(response.data)
       }, (err) => {
-        console.log(err)
-        res.json({message: "Error en la petición"})
+        //console.log(err)
+        res.send({
+          data: err.response.data,
+          mensaje: "Error en la petición"
+        })
       })
   }
 
   @Post('/registrarpago/:usertoken')
-  registrarPago(@Response()res, @Body()createtransferDto : createTransferDto, @Param()param) {
+  registrarPago(@Response() res, @Body() createtransferDto: createTransferDto, @Param() param) {
     console.log(createtransferDto)
     return this
       ._userService
@@ -70,11 +80,14 @@ export class UserController {
         res.send(response.data)
       }, (err) => {
         console.log(err)
-        res.json({message: "Error en la petición"})
+        res.send({
+          data: err.response.data,
+          mensaje: "Error en la petición"
+        })
       })
   }
   @Get('/:usertoken/bank-accounts/:id')
-  listarPago(@Response()res, @Param()param) {
+  listarPago(@Response() res, @Param() param) {
     console.log(param.id)
     return this
       ._userService
@@ -82,21 +95,27 @@ export class UserController {
       .subscribe(response => {
         res.send(response.data)
       }, (err) => {
-        console.log(err)
-        res.json({message: "Error en la petición"})
+        //console.log(err)
+        res.send({
+          data: err.response.data,
+          mensaje: "Error en la petición"
+        })
       })
   }
 
   @Post('/pagar')
-  emitirPago(@Response()res, @Body()createpaymentdto : createPaymentdto) {
+  emitirPago(@Response() res, @Body() createpaymentdto: createPaymentdto) {
     return this
       ._userService
       .emitirPago(createpaymentdto)
       .subscribe(response => {
         res.send(response.data)
       }, (err) => {
-        console.log(err)
-        res.json({message: "Error en la petición"})
+        //console.log(err)
+        res.send({
+          data: err.response.data,
+          mensaje: "Error en la petición"
+        })
       })
   }
 }
