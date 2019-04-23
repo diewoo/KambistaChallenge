@@ -20,6 +20,7 @@ Los requisitos planteados por Kambista son:
   -Framework Nest js
   -CRUD operaciones con Observadores
   -Editor de código Visual Studio Code
+  -Publicado en Heroku
   ```
 # Instalación 
 $ npm install
