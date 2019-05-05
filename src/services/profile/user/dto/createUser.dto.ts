@@ -8,8 +8,9 @@ export class createUserDto {
   readonly dateOfBirth : string;
   readonly addressLine1 : string;
   readonly city : string;
-  readonly country:string;
+  readonly country : string;
   readonly stateProvince : string;
-  readonly postalCode : string;  
+  readonly postalCode : string;
   readonly programToken : string;
+  readonly data : string;
 }

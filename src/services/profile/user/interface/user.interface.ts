@@ -11,6 +11,4 @@ export interface User {
   readonly country : string;
   readonly stateProvince : string;
   readonly postalCode : string;
-  readonly programToken : string;
-
 }

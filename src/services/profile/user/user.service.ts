@@ -70,8 +70,8 @@ export class UserService {
 
   }
 
-  listarUsuarios() : Observable < AxiosResponse < User[] >> {
-    return this.http.get < User[] > (apiUrl, config)
+  listarUsuarios() : Observable < AxiosResponse < any[] >> {
+    return this.http.get < any[] > (apiUrl, config)
   }
   listarCuentasBanco(usertoken : string) : Observable < AxiosResponse < any[] >> {
     const url = `${apiUrl}/${usertoken}/bank-accounts`;
