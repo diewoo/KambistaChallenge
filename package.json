@@ -2,7 +2,7 @@
     "name": "nest-payout-prueba-api",
     "version": "1.0.0",
     "description": "description",
-    "author": "Diego Renteria Vidaurre",
+    "author": "Diego Renteria",
     "license": "MIT",
     "engines": {
         "node": "11.2.0"
