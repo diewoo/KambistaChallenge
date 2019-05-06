@@ -74,7 +74,7 @@ export class UserService {
     const url=`${apiUrl}?offset=0&limit=100&sortBy=-createdOn`;
     return this.http.get < any[] > (url, config)
   }
-  listarCuentasBanco(usertoken : string) : Observable < AxiosResponse < any[] >> {
+  listarCuentasBanco(usertoken : string) : Observable < AxiosResponse < [Payment] >> {
     const url = `${apiUrl}/${usertoken}/bank-accounts`;
     return this
       .http
@@ -90,7 +90,6 @@ export class UserService {
     createTransfer.branchId = createtransferDto.branchId;
     createTransfer.bankAccountPurpose = createtransferDto.bankAccountPurpose;
     createTransfer.bankAccountId = createtransferDto.bankAccountId;
-    //console.log(createTransfer)
     return this.http.post < TransferMethod > (url, createTransfer, config)
   }
 

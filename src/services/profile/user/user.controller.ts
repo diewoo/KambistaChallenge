@@ -13,8 +13,7 @@ import {
   Param
 } from '@nestjs/common';
 
-import { UserService } from './user.service';
-import { ApiException } from '../../../shared/api-exception.model';
+import { UserService } from './user.service';   
 import { createTransferDto } from './dto/createTransfer.dto';
 import { createPaymentdto } from './dto/createPayment.dto';
 
@@ -29,11 +28,14 @@ export class UserController {
       ._userService
       .registrar(createuserDto)
       .subscribe(response => {
-        res.send(response.data)
+        res.send({usuario:response.data,
+          cod:1
+        })
       }, (err) => {
         res.send({
           data: err.response.data,
-          mensaje: "Error en la petición"
+          mensaje: "Error en la petición",
+          cod:0
         })
       })
   }
@@ -62,7 +64,8 @@ export class UserController {
       }, (err) => {
         res.send({
           data: err.response.data,
-          mensaje: "Error en la petición"
+          mensaje: "Error en la petición",
+          cod:0
         })
       })
   }
@@ -74,12 +77,13 @@ export class UserController {
       ._userService
       .registrarMetodoPago(createtransferDto, param.usertoken)
       .subscribe(response => {
-        res.send(response.data)
+        res.send({data:response.data,cod:1})
       }, (err) => {
         console.log(err)
         res.send({
           data: err.response.data,
-          mensaje: "Error en la petición"
+          mensaje: "Error en la petición",
+          cod:0
         })
       })
   }
@@ -105,11 +109,12 @@ export class UserController {
       ._userService
       .emitirPago(createpaymentdto)
       .subscribe(response => {
-        res.send(response.data)
+        res.send({data:response.data,cod:1})
       }, (err) => {
         res.send({
           data: err.response.data,
-          mensaje: "Error en la petición"
+          mensaje: "Error en la petición",
+          cod:0
         })
       })
   }
